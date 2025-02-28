@@ -1,21 +1,25 @@
 # Calculadora de IVA Avanzada para Venezuela (Python Tkinter)
 
 [![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-![Captura de pantalla de la calculadora](images/screenshot_calculadora.png) 
+![Captura de pantalla de la calculadora](images/screenshot_calculadora.png)
 
 ## Descripción General
 
-Esta es una **Calculadora de IVA Avanzada** desarrollada en Python utilizando la librería Tkinter para crear una interfaz gráfica de usuario (GUI).  Está diseñada específicamente para el cálculo del Impuesto al Valor Agregado (IVA) en **Venezuela**, pero puede ser adaptable a otros países ajustando la tasa de IVA.
+Esta es una **Calculadora de IVA Avanzada y Completa** desarrollada en Python utilizando la librería Tkinter para crear una interfaz gráfica de usuario (GUI).  Está diseñada específicamente para el cálculo del Impuesto al Valor Agregado (IVA) en **Venezuela**, ofreciendo **tres modos de cálculo** para cubrir diversas necesidades, y siendo adaptable a otros países ajustando la tasa de IVA.
 
 **Funcionalidades Principales:**
 
-*   **Cálculo Rápido y Preciso de IVA:** Ingresa las ventas y compras gravadas, la tasa de IVA, y obtén al instante el débito fiscal, crédito fiscal y el saldo a pagar o devolver.
-*   **Historial de Transacciones Detallado:**  Guarda un registro de cada cálculo realizado, incluyendo fecha, ventas, compras, tasa de IVA utilizada y los resultados.
-*   **Edición y Eliminación de Registros del Historial:**  Permite modificar o eliminar registros incorrectos o innecesarios en el historial.
-*   **Exportación a CSV:**  Exporta todo el historial de transacciones a un archivo CSV para llevar un registro digital, generar informes o compartir con tu contador.
-*   **Interfaz Gráfica Intuitiva y Fácil de Usar:** Desarrollada con Tkinter y `ttkthemes` para una experiencia visual agradable y sencilla.
+*   **Tres Modos de Cálculo Versátiles:**
+    *   **Cálculo de Saldo de IVA:** Modo tradicional. Ingresa las ventas y compras gravadas, la tasa de IVA, y obtén al instante el débito fiscal, crédito fiscal y el saldo a pagar o devolver.
+    *   **Calcular IVA de un Total (IVA Incluido):**  Permite ingresar un monto total que ya incluye IVA y calcular automáticamente cuánto de ese monto corresponde al impuesto. Ideal para compras donde necesitas desglosar el IVA pagado.
+    *   **Sumar IVA a un Precio (Añadir IVA):**  Calcula el precio final al añadir el IVA a un precio original dado. Útil para fijar precios de venta o calcular el total a pagar antes de impuestos.
+*   **Cálculo Rápido y Preciso de IVA:** En todos los modos, realiza cálculos precisos al instante con solo ingresar los datos necesarios.
+*   **Historial de Transacciones Detallado y Completo:**  Guarda un registro de **cada cálculo realizado en cualquiera de los tres modos**, incluyendo fecha, modo de cálculo, datos de entrada específicos de cada modo (ventas, compras, total con IVA, precio original), tasa de IVA utilizada y todos los resultados relevantes.
+*   **Edición y Eliminación de Registros del Historial para Todos los Modos:**  Permite modificar o eliminar registros incorrectos o innecesarios en el historial, **sin importar el modo de cálculo** con el que se generaron. La edición se adapta a cada modo, permitiendo modificar los datos de entrada correspondientes.
+*   **Exportación a CSV:**  Exporta todo el historial de transacciones, **incluyendo todos los modos de cálculo y sus datos**, a un archivo CSV para llevar un registro digital, generar informes o compartir con tu contador.
+*   **Interfaz Gráfica Intuitiva y Fácil de Usar:** Desarrollada con Tkinter y `ttkthemes` para una experiencia visual agradable y sencilla, facilitando el uso de todas las funcionalidades.
 *   **Multiplataforma (Script Python):**  El código fuente Python puede ejecutarse en **Windows, macOS y Linux** siempre que se tengan las dependencias instaladas.
 *   **Ejecutable para Linux (Opcional):** Se proporciona un ejecutable para usuarios de Linux (generado en Ubuntu) para una ejecución aún más sencilla sin necesidad de instalar Python ni dependencias.
 
@@ -48,7 +52,7 @@ Esta es la forma principal de utilizar la calculadora y es **multiplataforma**.
     ```bash
     python3 iva_calculator.py
     ```
-5.  La ventana de la Calculadora de IVA se abrirá y podrás empezar a usarla.
+5.  La ventana de la Calculadora de IVA se abrirá y podrás empezar a usarla.  Podrás seleccionar entre los **tres modos de cálculo** mediante los Radio Buttons en la parte superior de la ventana.
 
 ### Ejecutando el Ejecutable para Linux (Opcional - `linux/iva_calculator`)
 
@@ -75,7 +79,7 @@ Para usuarios de Linux, se proporciona un ejecutable para simplificar aún más 
 
 ### Exportar Historial a CSV
 
-Al hacer clic en el botón "Exportar Historial a CSV", el archivo `historial_iva.csv` se generará **en la misma carpeta donde se encuentra el script Python (`iva_calculator.py`) o el ejecutable (`iva_calculator`)**.
+Al hacer clic en el botón "Exportar Historial a CSV", el archivo `historial_iva.csv` se generará **en la misma carpeta donde se encuentra el script Python (`iva_calculator.py`) o el ejecutable (`iva_calculator`)**.  El archivo CSV contendrá el historial completo, incluyendo las transacciones de los **tres modos de cálculo**.
 
 ## Personalización (Para Desarrolladores)
 
@@ -101,9 +105,9 @@ Este proyecto está bajo la licencia **MIT License**. Consulta el archivo [LICEN
 Desarrollado por **Alexander Carrasquel**
 
 *   [LinkedIn](https://www.linkedin.com/in/alexander-carrasquel-41a616108/)
-*   [GitHub](https://github.com/carrasquelalex1) 
+*   [GitHub](https://github.com/carrasquelalex1)
 
 **¡Agradecer no cuesta nada!** Si encuentras útil este proyecto, considera dar una estrella ⭐ al repositorio o compartirlo con tu red.  ¡Tu apoyo es importante!
 
 ---
-¡Espero que esta herramienta te sea de gran utilidad!  Si tienes alguna pregunta, sugerencia o encuentras algún error, por favor, no dudes en crear un "Issue" en este repositorio.
+¡Espero que esta herramienta te sea de gran utilidad, ahora con **tres modos de cálculo** para cubrir todas tus necesidades de IVA! Si tienes alguna pregunta, sugerencia o encuentras algún error, por favor, no dudes en crear un "Issue" en este repositorio.
