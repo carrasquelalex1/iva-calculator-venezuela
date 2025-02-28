@@ -3,13 +3,13 @@ from tkinter import ttk
 from tkinter import messagebox
 import csv
 from datetime import datetime
-from ttkthemes import ThemedTk  # Import ThemedTk
+from ttkthemes import ThemedTk  
 
 class AdvancedIVACalculator:
     def __init__(self, root):
         self.root = root
         self.root.title("Calculadora de IVA Avanzada (Venezuela)")
-        # self.root.geometry("800x600") # Remove fixed geometry, let it expand
+      
 
         # Variables de estado
         self.sales = tk.StringVar()
@@ -19,7 +19,7 @@ class AdvancedIVACalculator:
         self.debit_fiscal = tk.DoubleVar()
         self.balance = tk.DoubleVar()
         self.transactions = []
-        self.selected_transaction_index = None # To keep track of selected row index
+        self.selected_transaction_index = None 
 
         # Estilo ttk con colores personalizados
         self.style = ttk.Style(root)
@@ -32,9 +32,9 @@ class AdvancedIVACalculator:
         self.style.map('Export.TButton', background=[('active', '#1976D2'), ('disabled', '#BBDEFB')])
         self.style.configure('Clear.TButton', background='#FF9800', foreground='white', relief='raised')
         self.style.map('Clear.TButton', background=[('active', '#F57C00'), ('disabled', '#FFCC80')])
-        self.style.configure('Edit.TButton', background='#FFC107', foreground='black', relief='raised') # Yellow for Edit
+        self.style.configure('Edit.TButton', background='#FFC107', foreground='black', relief='raised') # Amarillo para Edit
         self.style.map('Edit.TButton', background=[('active', '#FFB300'), ('disabled', '#FFECB3')])
-        self.style.configure('Delete.TButton', background='#F44336', foreground='white', relief='raised') # Red for Delete
+        self.style.configure('Delete.TButton', background='#F44336', foreground='white', relief='raised') # Rojo para Delete
         self.style.map('Delete.TButton', background=[('active', '#D32F2F'), ('disabled', '#FFCDD2')])
 
 
@@ -96,13 +96,13 @@ class AdvancedIVACalculator:
         self.tree.heading("Fecha", text="Fecha")
         self.tree.heading("Ventas", text="Ventas")
         self.tree.heading("Compras", text="Compras")
-        self.tree.heading("Tasa IVA (%)", text="Tasa IVA (%)") # Header for new column
+        self.tree.heading("Tasa IVA (%)", text="Tasa IVA (%)") 
         self.tree.heading("Débito", text="Débito Fiscal")
         self.tree.heading("Crédito", text="Crédito Fiscal")
         self.tree.heading("Saldo", text="Saldo")
         self.tree.pack()
 
-        self.tree.bind("<ButtonRelease-1>", self.select_transaction) # Bind click event to select row
+        self.tree.bind("<ButtonRelease-1>", self.select_transaction) 
 
         # Frame for Edit/Delete buttons (below history table)
         history_button_frame = ttk.Frame(history_frame)
@@ -159,7 +159,7 @@ class AdvancedIVACalculator:
                 transaction["date"],
                 transaction["sales"],
                 transaction["purchases"],
-                transaction["iva_rate"], # Displaying IVA rate in the table
+                transaction["iva_rate"], 
                 transaction["debit"],
                 transaction["credit"],
                 transaction["balance"]
@@ -173,7 +173,7 @@ class AdvancedIVACalculator:
         file_path = "historial_iva.csv"
         with open(file_path, mode="w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
-            writer.writerow(["Fecha", "Ventas", "Compras", "Tasa IVA (%)", "Débito Fiscal", "Crédito Fiscal", "Saldo"]) # Added "Tasa IVA (%)" to header
+            writer.writerow(["Fecha", "Ventas", "Compras", "Tasa IVA (%)", "Débito Fiscal", "Crédito Fiscal", "Saldo"]) 
             for transaction in self.transactions:
                 writer.writerow([
                     transaction["date"],
@@ -190,17 +190,17 @@ class AdvancedIVACalculator:
         if messagebox.askyesno("Confirmar", "¿Estás seguro de que quieres limpiar el historial de transacciones?"):
             self.transactions = []
             self.update_transaction_table()
-            self.disable_history_buttons() # Disable Edit/Delete buttons after clearing
+            self.disable_history_buttons() 
             messagebox.showinfo("Información", "Historial de transacciones limpiado.")
 
     def select_transaction(self, event):
         row_id = self.tree.identify_row(event.y)
         if row_id:
             self.tree.selection_set(row_id)
-            self.selected_transaction_index = self.tree.index(row_id) # Get index of selected item
-            self.enable_history_buttons() # Enable Edit/Delete buttons when a row is selected
+            self.selected_transaction_index = self.tree.index(row_id) 
+            self.enable_history_buttons() 
         else:
-            self.disable_history_buttons() # Disable buttons if no row is selected
+            self.disable_history_buttons() 
 
     def enable_history_buttons(self):
         self.edit_button.config(state=tk.NORMAL)
@@ -209,15 +209,15 @@ class AdvancedIVACalculator:
     def disable_history_buttons(self):
         self.edit_button.config(state=tk.DISABLED)
         self.delete_button.config(state=tk.DISABLED)
-        self.tree.selection_remove(self.tree.selection()) # Deselect any selected row
+        self.tree.selection_remove(self.tree.selection()) 
 
     def delete_transaction(self):
         if self.selected_transaction_index is not None:
             if messagebox.askyesno("Confirmar", "¿Estás seguro de que quieres eliminar este registro?"):
                 del self.transactions[self.selected_transaction_index]
                 self.update_transaction_table()
-                self.disable_history_buttons() # Disable buttons after deletion
-                self.selected_transaction_index = None # Reset selected index
+                self.disable_history_buttons() 
+                self.selected_transaction_index = None 
                 messagebox.showinfo("Información", "Registro eliminado del historial.")
         else:
             messagebox.showinfo("Advertencia", "Por favor, selecciona un registro para eliminar.")
@@ -288,7 +288,7 @@ class EditTransactionDialog(tk.Toplevel):
         balance_result = debit - credit
 
         updated_transaction_data = {
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), # Date updated on edit
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 
             "sales": round(updated_sales, 2),
             "purchases": round(updated_purchases, 2),
             "iva_rate": updated_iva_rate,
